@@ -71,7 +71,7 @@ void mul_nodes(stack_t **, unsigned int);
 void mod_nodes(stack_t **, unsigned int);
 
 /*Error hanlding*/
-void err(int error_code, ...);
-void more_err(int error_code, ...);
+void handle_error(int error_code, ...);
+void more_handle_error(int error_code, ...);
 
 #endif
