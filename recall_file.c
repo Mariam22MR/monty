@@ -11,7 +11,7 @@ void open_file(char *file_name)
 	FILE *fd = fopen(file_name, "r");
 
 	if (file_name == NULL || fd == NULL)
-		err(2, file_name);
+		handle_error(2, file_name);
 
 	read_file(fd);
 	fclose(fd);
@@ -54,7 +54,7 @@ int parse_line(char *buffer, int line_number, int format)
 	const char *delim = "\n ";
 
 	if (buffer == NULL)
-		err(4);
+		handle_error(4);
 
 	opcode = strtok(buffer, delim);
 	if (opcode == NULL)
@@ -96,10 +96,6 @@ void find_func(char *opcode, char *value, int ln, int format)
 		{"div", div_nodes},
 		{"mul", mul_nodes},
 		{"mod", mod_nodes},
-		{"pchar", print_char},
-		{"pstr", print_str},
-		{"rotl", rotl},
-		{"rotr", rotr},
 		{NULL, NULL}
 	};
 
@@ -115,7 +111,7 @@ void find_func(char *opcode, char *value, int ln, int format)
 		}
 	}
 	if (flag == 1)
-		err(3, ln, opcode);
+		handle_error(3, ln, opcode);
 }
 
 
@@ -143,11 +139,11 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 			flag = -1;
 		}
 		if (val == NULL)
-			err(5, ln);
+			handle_error(5, ln);
 		for (i = 0; val[i] != '\0'; i++)
 		{
 			if (isdigit(val[i]) == 0)
-				err(5, ln);
+				handle_error(5, ln);
 		}
 		node = create_node(atoi(val) * flag);
 		if (format == 0)
