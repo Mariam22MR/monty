@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * div_nodes - Adds the top two elements of the stack.
+ * div_tow_elements - Adds the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @len_number: Interger representing the line number of of the opcode.
  */
-void div_nodes(stack_t **stack, unsigned int len_number)
+void div_tow_elements(stack_t **stack, unsigned int len_number)
 {
 	int i;
 
@@ -22,11 +22,11 @@ void div_nodes(stack_t **stack, unsigned int len_number)
 }
 
 /**
- * mul_nodes - Adds the top two elements of the stack.
+ * mul_tow_elements - Adds the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @len_number: Interger representing the line number of of the opcode.
  */
-void mul_nodes(stack_t **stack, unsigned int len_number)
+void mul_tow_elements(stack_t **stack, unsigned int len_number)
 {
 	int i;
 
@@ -41,11 +41,11 @@ void mul_nodes(stack_t **stack, unsigned int len_number)
 }
 
 /**
- * mod_nodes - Adds the top two elements of the stack.
+ * mod_tow_elements - Adds the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @len_number: Interger representing the line number of of the opcode.
  */
-void mod_nodes(stack_t **stack, unsigned int len_number)
+void mod_tow_elements(stack_t **stack, unsigned int len_number)
 {
 	int i;
 
