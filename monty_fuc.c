@@ -25,11 +25,11 @@ void add_nodes(stack_t **node, __attribute__((unused))unsigned int i)
 
 
 /**
- * monty_print - Adds a node to the stack.
+ * monty_print_add - Adds a node to the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @len_number: line number of  the opcode.
  */
-void monty_print(stack_t **stack, unsigned int len_number)
+void monty_print_add(stack_t **stack, unsigned int len_number)
 {
 	stack_t *tmp;
 
