@@ -6,12 +6,12 @@
  * Return: void
  */
 
-void monty_open(char *fn)
+void monty_open(char *name_file)
 {
-	FILE *fd = fopen(fn, "r");
+	FILE *fd = fopen(name_file, "r");
 
-	if (fn == NULL || fd == NULL)
-		handle_error(2, fn);
+	if (name_file == NULL || fd == NULL)
+		handle_error(2, name_file);
 
 	monty_read(fd);
 	fclose(fd);
@@ -50,7 +50,7 @@ void monty_read(FILE *fd)
 
 int monty_strtok(char *buf, int len_number, int format)
 {
-	char *opcode, *value;
+	char *opcode, *va;
 	const char *delim = "\n ";
 
 	if (buf == NULL)
@@ -59,14 +59,14 @@ int monty_strtok(char *buf, int len_number, int format)
 	opcode = strtok(buf, delim);
 	if (opcode == NULL)
 		return (format);
-	value = strtok(NULL, delim);
+	va = strtok(NULL, delim);
 
 	if (strcmp(opcode, "stack") == 0)
 		return (0);
 	if (strcmp(opcode, "queue") == 0)
 		return (1);
 
-	monty_find(opcode, value, len_number, format);
+	monty_find(opcode, va, len_number, format);
 	return (format);
 }
 
@@ -75,25 +75,25 @@ int monty_strtok(char *buf, int len_number, int format)
  * @opcode: opcode
  * @value: argument of opcode
  * @format:  storage format. If 0 Nodes will be entered as a stack.
- * @ln: line number
+ * @l: line number
  * if 1 nodes will be entered as a queue.
  * Return: void
  */
-void monty_find(char *opcode, char *value, int ln, int format)
+void monty_find(char *opcode, char *va, int l, int format)
 {
 	int i;
 	int flag;
 
 	instruction_t func_list[] = {
 		{"push", add_to_line},
-		{"pall", print_stack},
-		{"pint", print_top},
-		{"pop", pop_top},
-		{"nop", nop},
-		{"swap", swap_nodes},
-		{"add", add_nodes},
-		{"sub", sub_nodes},
-		{"div", div_elements},
+		{"pall", monty_print_add},
+		{"pint", monty_print},
+		{"pop", monty_pop},
+		{"nop", monty_nop},
+		{"swap", swap_tow_elements},
+		{"add", add_tow_elements},
+		{"sub", sub_tow_elements},
+		{"div", div_tow_elements},
 		{"mul", mul_tow_elements},
 		{"mod", mod_tow_elements},
 		{NULL, NULL}
@@ -106,12 +106,12 @@ void monty_find(char *opcode, char *value, int ln, int format)
 	{
 		if (strcmp(opcode, func_list[i].opcode) == 0)
 		{
-			monty_call(func_list[i].f, opcode, value, ln, format);
+			monty_call(func_list[i].f, opcode, va, l, format);
 			flag = 0;
 		}
 	}
 	if (flag == 1)
-		handle_error(3, ln, opcode);
+		handle_error(3, l, opcode);
 }
 
 
@@ -124,7 +124,7 @@ void monty_find(char *opcode, char *value, int ln, int format)
  * @format: Format specifier. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
  */
-void monty_call(op_func func, char *op, char *val, int ln, int format)
+void monty_call(op_func func, char *op, char *va, int l, int format)
 {
 	stack_t *node;
 	int flag;
@@ -133,24 +133,24 @@ void monty_call(op_func func, char *op, char *val, int ln, int format)
 	flag = 1;
 	if (strcmp(op, "push") == 0)
 	{
-		if (val != NULL && val[0] == '-')
+		if (va != NULL && val[0] == '-')
 		{
-			val = val + 1;
+			va = va + 1;
 			flag = -1;
 		}
-		if (val == NULL)
-			handle_error(5, ln);
-		for (i = 0; val[i] != '\0'; i++)
+		if (va == NULL)
+			handle_error(5, l);
+		for (i = 0; va[i] != '\0'; i++)
 		{
-			if (isdigit(val[i]) == 0)
-				handle_error(5, ln);
+			if (isdigit(va[i]) == 0)
+				handle_error(5, l);
 		}
-		node = monty_create(atoi(val) * flag);
+		node = monty_create(atoi(va) * flag);
 		if (format == 0)
-			func(&node, ln);
+			func(&node, l);
 		if (format == 1)
-			add_to_line(&node, ln);
+			add_to_line(&node, l);
 	}
 	else
-		func(&head, ln);
+		func(&head, l);
 }
