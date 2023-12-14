@@ -5,18 +5,18 @@
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @len_number: Interger representing the line number of of the opcode.
  */
-void nop(stack_t **stack, unsigned int len_number)
+void monty_nop(stack_t **stack, unsigned int len_number)
 {
 	(void)stack;
 	(void)len_number;
 }
 
 /**
- * swap_nodes - Swaps the top two elements of the stack.
+ * swap_tow_elements - Swaps the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @len_number: Interger representing the line number of of the opcode.
  */
-void swap_nodes(stack_t **stack, unsigned int len_number)
+void swap_tow_element(stack_t **stack, unsigned int len_number)
 {
 	stack_t *tmp;
 
@@ -33,7 +33,7 @@ void swap_nodes(stack_t **stack, unsigned int len_number)
 }
 
 /**
- * add_nodes - Adds the top two elements of the stack.
+ * add_tow_elements - Adds the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @len_number: Interger representing the line number of of the opcode.
  */
@@ -52,11 +52,11 @@ void add_nodes(stack_t **stack, unsigned int len_number)
 }
 
 /**
- * sub_nodes - Adds the top two elements of the stack.
+ * sub_tow_elements - Adds the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @len_number: Interger representing the line number of of the opcode.
  */
-void sub_nodes(stack_t **stack, unsigned int len_number)
+void sub_tow_elements(stack_t **stack, unsigned int len_number)
 {
 	int i;
 
