@@ -1,40 +1,40 @@
 #include "main.h"
 
 /**
- * open_file - opens a file
- * @file_name: the file namepath
+ * monty_open - opens a file
+ * @fn: the file namepath
  * Return: void
  */
 
-void open_file(char *file_name)
+void monty_open(char *fn)
 {
-	FILE *fd = fopen(file_name, "r");
+	FILE *fd = fopen(fn, "r");
 
-	if (file_name == NULL || fd == NULL)
-		handle_error(2, file_name);
+	if (fn == NULL || fd == NULL)
+		handle_error(2, fn);
 
-	read_file(fd);
+	monty_read(fd);
 	fclose(fd);
 }
 
 
 /**
- * read_file - reads a file
+ * monty_read - reads a file
  * @fd: pointer to file descriptor
  * Return: void
  */
 
-void read_file(FILE *fd)
+void monty_read(FILE *fd)
 {
-	int line_number, format = 0;
-	char *buffer = NULL;
-	size_t len = 0;
+	int len_number, format = 0;
+	char *buf = NULL;
+	size_t l = 0;
 
-	for (line_number = 1; getline(&buffer, &len, fd) != -1; line_number++)
+	for (len_number = 1; getline(&buf, &l, fd) != -1; len_number++)
 	{
-		format = parse_line(buffer, line_number, format);
+		format = parse_line(buf, len_number, format);
 	}
-	free(buffer);
+	free(buf);
 }
 
 
@@ -71,7 +71,7 @@ int parse_line(char *buffer, int line_number, int format)
 }
 
 /**
- * find_func - find the appropriate function for the opcode
+ * monty_find - find the appropriate function for the opcode
  * @opcode: opcode
  * @value: argument of opcode
  * @format:  storage format. If 0 Nodes will be entered as a stack.
@@ -79,7 +79,7 @@ int parse_line(char *buffer, int line_number, int format)
  * if 1 nodes will be entered as a queue.
  * Return: void
  */
-void find_func(char *opcode, char *value, int ln, int format)
+void monty_find(char *opcode, char *value, int ln, int format)
 {
 	int i;
 	int flag;
@@ -106,7 +106,7 @@ void find_func(char *opcode, char *value, int ln, int format)
 	{
 		if (strcmp(opcode, func_list[i].opcode) == 0)
 		{
-			call_fun(func_list[i].f, opcode, value, ln, format);
+			monty_call(func_list[i].f, opcode, value, ln, format);
 			flag = 0;
 		}
 	}
@@ -116,7 +116,7 @@ void find_func(char *opcode, char *value, int ln, int format)
 
 
 /**
- * call_fun - Calls the required function.
+ * monty_call - Calls the required function.
  * @func: Pointer to the function that is about to be called.
  * @op: string representing the opcode.
  * @val: string representing a numeric value.
@@ -124,7 +124,7 @@ void find_func(char *opcode, char *value, int ln, int format)
  * @format: Format specifier. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
  */
-void call_fun(op_func func, char *op, char *val, int ln, int format)
+void monty_call(op_func func, char *op, char *val, int ln, int format)
 {
 	stack_t *node;
 	int flag;
@@ -145,7 +145,7 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 			if (isdigit(val[i]) == 0)
 				handle_error(5, ln);
 		}
-		node = create_node(atoi(val) * flag);
+		node = monty_create(atoi(val) * flag);
 		if (format == 0)
 			func(&node, ln);
 		if (format == 1)
