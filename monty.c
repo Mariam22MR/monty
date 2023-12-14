@@ -16,7 +16,7 @@ int monty_main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	open_file(argv[1]);
-	free_nodes();
+	monty_free();
 	return (0);
 }
 
