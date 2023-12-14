@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * nop - Does nothing.
+ * monty_nop - Does nothing.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @len_number: Interger representing the line number of of the opcode.
  */
