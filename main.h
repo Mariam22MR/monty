@@ -44,7 +44,7 @@ typedef void (*op_func)(stack_t **, unsigned int);
 
 /*file operations*/
 void monty_open(char *file_name);
-int parse_line(char *buffer, int line_number, int format);
+int monty_strtok(char *buffer, int line_number, int format);
 void monty_read(FILE *);
 int len_chars(FILE *);
 void monty_find(char *, char *, int, int);
