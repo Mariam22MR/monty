@@ -66,9 +66,9 @@ void swap_tow_elements(stack_t **, unsigned int);
 /*Math operations with nodes*/
 void add_tow_elements(stack_t **, unsigned int);
 void sub_tow_elements(stack_t **, unsigned int);
-void div_nodes(stack_t **, unsigned int);
-void mul_nodes(stack_t **, unsigned int);
-void mod_nodes(stack_t **, unsigned int);
+void div_tow_elements(stack_t **, unsigned int);
+void mul_tow_elements(stack_t **, unsigned int);
+void mod_tow_elements(stack_t **, unsigned int);
 
 /*Error hanlding*/
 void handle_error(int error_code, ...);
