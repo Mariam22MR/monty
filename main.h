@@ -43,11 +43,11 @@ extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 
 /*file operations*/
-void open_file(char *file_name);
+void monty_open(char *file_name);
 int parse_line(char *buffer, int line_number, int format);
-void read_file(FILE *);
+void monty_read(FILE *);
 int len_chars(FILE *);
-void find_func(char *, char *, int, int);
+void monty_find(char *, char *, int, int);
 
 /*Stack operations*/
 stack_t *monty_create(int n);
@@ -56,7 +56,7 @@ void monty_print_add(stack_t **, unsigned int);
 void add_nodes(stack_t **, unsigned int);
 void add_to_line(stack_t **, unsigned int);
 
-void call_fun(op_func, char *, char *, int, int);
+void monty_call(op_func, char *, char *, int, int);
 
 void monty_print(stack_t **, unsigned int);
 void monty_pop(stack_t **, unsigned int);
