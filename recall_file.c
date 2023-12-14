@@ -32,14 +32,14 @@ void monty_read(FILE *fd)
 
 	for (len_number = 1; getline(&buf, &l, fd) != -1; len_number++)
 	{
-		format = parse_line(buf, len_number, format);
+		format = monty_strtok(buf, len_number, format);
 	}
 	free(buf);
 }
 
 
 /**
- * parse_line - Separates each line into tokens to determine
+ * monty_strtok - Separates each line into tokens to determine
  * which function to call
  * @buffer: line from the file
  * @line_number: line number
@@ -48,15 +48,15 @@ void monty_read(FILE *fd)
  * Return: Returns 0 if the opcode is stack. 1 if queue.
  */
 
-int parse_line(char *buffer, int line_number, int format)
+int monty_strtok(char *buf, int len_number, int format)
 {
 	char *opcode, *value;
 	const char *delim = "\n ";
 
-	if (buffer == NULL)
+	if (buf == NULL)
 		handle_error(4);
 
-	opcode = strtok(buffer, delim);
+	opcode = strtok(buf, delim);
 	if (opcode == NULL)
 		return (format);
 	value = strtok(NULL, delim);
@@ -66,7 +66,7 @@ int parse_line(char *buffer, int line_number, int format)
 	if (strcmp(opcode, "queue") == 0)
 		return (1);
 
-	find_func(opcode, value, line_number, format);
+	monty_find(opcode, value, len_number, format);
 	return (format);
 }
 
@@ -85,7 +85,7 @@ void monty_find(char *opcode, char *value, int ln, int format)
 	int flag;
 
 	instruction_t func_list[] = {
-		{"push", add_to_stack},
+		{"push", add_to_line},
 		{"pall", print_stack},
 		{"pint", print_top},
 		{"pop", pop_top},
@@ -93,9 +93,9 @@ void monty_find(char *opcode, char *value, int ln, int format)
 		{"swap", swap_nodes},
 		{"add", add_nodes},
 		{"sub", sub_nodes},
-		{"div", div_nodes},
-		{"mul", mul_nodes},
-		{"mod", mod_nodes},
+		{"div", div_elements},
+		{"mul", mul_tow_elements},
+		{"mod", mod_tow_elements},
 		{NULL, NULL}
 	};
 
@@ -149,7 +149,7 @@ void monty_call(op_func func, char *op, char *val, int ln, int format)
 		if (format == 0)
 			func(&node, ln);
 		if (format == 1)
-			add_to_queue(&node, ln);
+			add_to_line(&node, ln);
 	}
 	else
 		func(&head, ln);
