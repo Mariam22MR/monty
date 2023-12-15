@@ -42,36 +42,32 @@ typedef struct instruction_s
 extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 
-/*file operations*/
-void monty_open(char *file_name);
-int monty_strtok(char *buffer, int line_number, int format);
-void monty_read(FILE *);
-int len_chars(FILE *);
-void monty_find(char *, char *, int, int);
+void monty_open(char *file_name)
+int monty_strtok(char *buf, int len_number, int format)
+void monty_read(FILE *)
+int len_chars(FILE *)
+void monty_find(char *, char *, int, int)
 
-/*Stack operations*/
-stack_t *monty_create(int n);
-void monty_free(void);
-void monty_print_add(stack_t **, unsigned int);
-void add_nodes(stack_t **, unsigned int);
-void add_to_line(stack_t **, unsigned int);
+stack_t *monty_create(int n)
+void monty_free(void)
+void monty_print_add(stack_t **, unsigned int)
+void add_nodes(stack_t **, unsigned int)
+void add_to_line(stack_t **, unsigned int)
 
-void monty_call(op_func, char *, char *, int, int);
+void monty_call(op_func, char *, char *, int, int)
 
-void monty_print(stack_t **, unsigned int);
-void monty_pop(stack_t **, unsigned int);
-void monty_nop(stack_t **, unsigned int);
-void swap_tow_elements(stack_t **, unsigned int);
+void monty_print(stack_t **, unsigned int)
+void monty_pop(stack_t **, unsigned int)
+void monty_nop(stack_t **, unsigned int)
+void swap_tow_elements(stack_t **, unsigned int)
 
-/*Math operations with nodes*/
-void add_tow_elements(stack_t **, unsigned int);
-void sub_tow_elements(stack_t **, unsigned int);
-void div_tow_elements(stack_t **, unsigned int);
-void mul_tow_elements(stack_t **, unsigned int);
-void mod_tow_elements(stack_t **, unsigned int);
+void add_tow_elements(stack_t **, unsigned int)
+void sub_tow_elements(stack_t **, unsigned int)
+void div_tow_elements(stack_t **, unsigned int)
+void mul_tow_elements(stack_t **, unsigned int)
+void mod_tow_elements(stack_t **, unsigned int)
 
-/*Error hanlding*/
-void handle_error(int error_code, ...);
-void more_handle_error(int error_code, ...);
+void handle_error(int error_code, ...)
+void more_handle_error(int error_code, ...)
 
 #endif
