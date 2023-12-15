@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /*
  * monty_open - Opens and reads a Monty script file.
