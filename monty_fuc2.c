@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /*
  * div_two_elements - Divides the second element by the top element in the stack.
