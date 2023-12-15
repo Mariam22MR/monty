@@ -52,7 +52,7 @@ void add_tow_elements(stack_t **stack, unsigned int len_number)
 	int i;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_handle_err(8, len_number, "add");
+		more_handle_error(8, len_number, "add");
 
 	(*stack) = (*stack)->next;
 	i = (*stack)->n + (*stack)->prev->n;
@@ -76,7 +76,7 @@ void sub_tow_elements(stack_t **stack, unsigned int len_number)
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 
-		more_handle_err(8, len_number, "sub");
+		more_handle_error(8, len_number, "sub");
 
 	(*stack) = (*stack)->next;
 	i = (*stack)->n - (*stack)->prev->n;

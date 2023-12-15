@@ -19,7 +19,7 @@ int monty_main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	open_file(argv[1]);
+	monty_open(argv[1]);
 	monty_free();
 	return (0);
 }
