@@ -1,36 +1,40 @@
 #include "main.h"
 
-/**
- * monty_open - opens a file
- * @fn: the file namepath
- * Return: void
+/*
+ * monty_open - Opens and reads a Monty script file.
+ * @name_file: Name of the Monty script file to be opened.
+ *
+ * This function opens the specified Monty script file in read-only mode.
+ * Exits with an error message (case 2) if the file cannot be opened.
+ * Reads the content of the file using monty_read() and then closes the file.
  */
-
 void monty_open(char *name_file)
 {
-	FILE *fd = fopen(name_file, "r");
+	FILE *file_desc = fopen(name_file, "r");
 
-	if (name_file == NULL || fd == NULL)
+	if (name_file == NULL || file_desc == NULL)
 		handle_error(2, name_file);
 
-	monty_read(fd);
-	fclose(fd);
+	monty_read(file_desc);
+	fclose(file_desc);
 }
 
 
-/**
- * monty_read - reads a file
- * @fd: pointer to file descriptor
- * Return: void
+/*
+ * monty_read - Reads and processes Monty script file lines.
+ * @file_desc: Pointer to the opened Monty script file.
+ *
+ * This function reads each line from the provided Monty script file
+ * and processes the commands using monty_strtok(). It increments the
+ * line number for error reporting.
  */
-
-void monty_read(FILE *fd)
+void monty_read(FILE *file_desc)
 {
 	int len_number, format = 0;
 	char *buf = NULL;
 	size_t l = 0;
 
-	for (len_number = 1; getline(&buf, &l, fd) != -1; len_number++)
+	for (len_number = 1; getline(&buf, &l, file_desc) != -1; len_number++)
 	{
 		format = monty_strtok(buf, len_number, format);
 	}
@@ -38,28 +42,29 @@ void monty_read(FILE *fd)
 }
 
 
-/**
- * monty_strtok - Separates each line into tokens to determine
- * which function to call
- * @buffer: line from the file
- * @line_number: line number
- * @format:  storage format. If 0 Nodes will be entered as a stack.
- * if 1 nodes will be entered as a queue.
- * Return: Returns 0 if the opcode is stack. 1 if queue.
+/*
+ * monty_strtok - Tokenizes a line from a Monty script file.
+ * @buf: Line from the Monty script file to be tokenized.
+ * @len_number: Line number for error reporting.
+ * @format: Current format (0 for stack, 1 for queue).
+ *
+ * This function tokenizes the provided line using space and newline characters
+ * as delimiters. It extracts the opcode and value, if present, and checks for
+ * special opcodes "stack" and "queue" to update the format. Calls monty_find()
+ * to process the opcode and value.
  */
-
 int monty_strtok(char *buf, int len_number, int format)
 {
 	char *opcode, *va;
-	const char *delim = "\n ";
+	const char *delimeters = "\n ";
 
 	if (buf == NULL)
 		handle_error(4);
 
-	opcode = strtok(buf, delim);
+	opcode = strtok(buf, delimeters);
 	if (opcode == NULL)
 		return (format);
-	va = strtok(NULL, delim);
+	va = strtok(NULL, delimeters);
 
 	if (strcmp(opcode, "stack") == 0)
 		return (0);
@@ -82,7 +87,7 @@ int monty_strtok(char *buf, int len_number, int format)
 void monty_find(char *opcode, char *va, int l, int format)
 {
 	int i;
-	int flag;
+	int f;
 
 	instruction_t func_list[] = {
 		{"push", add_to_line},
@@ -102,41 +107,42 @@ void monty_find(char *opcode, char *va, int l, int format)
 	if (opcode[0] == '#')
 		return;
 
-	for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
+	for (f = 1, i = 0; func_list[i].opcode != NULL; i++)
 	{
 		if (strcmp(opcode, func_list[i].opcode) == 0)
 		{
 			monty_call(func_list[i].f, opcode, va, l, format);
-			flag = 0;
+			f = 0;
 		}
 	}
-	if (flag == 1)
+	if (f == 1)
 		handle_error(3, l, opcode);
 }
 
-
-/**
- * monty_call - Calls the required function.
- * @func: Pointer to the function that is about to be called.
- * @op: string representing the opcode.
- * @val: string representing a numeric value.
- * @ln: line numeber for the instruction.
- * @format: Format specifier. If 0 Nodes will be entered as a stack.
- * if 1 nodes will be entered as a queue.
+/*
+ * monty_find - Finds and calls the appropriate Monty instruction function.
+ * @opcode: Opcode to be processed.
+ * @va: Optional value associated with the opcode.
+ * @l: Line number for error reporting.
+ * @format: Current format (0 for stack, 1 for queue).
+ *
+ * This function iterates through the list of supported Monty instructions
+ * and calls the corresponding function based on the provided opcode. Handles
+ * special cases for comments (opcode starting with '#') and unknown instructions.
  */
 void monty_call(op_func func, char *op, char *va, int l, int format)
 {
 	stack_t *node;
-	int flag;
+	int f;
 	int i;
 
-	flag = 1;
+	f = 1;
 	if (strcmp(op, "push") == 0)
 	{
-		if (va != NULL && val[0] == '-')
+		if (va != NULL && va[0] == '-')
 		{
 			va = va + 1;
-			flag = -1;
+			f = -1;
 		}
 		if (va == NULL)
 			handle_error(5, l);
@@ -145,7 +151,7 @@ void monty_call(op_func func, char *op, char *va, int l, int format)
 			if (isdigit(va[i]) == 0)
 				handle_error(5, l);
 		}
-		node = monty_create(atoi(va) * flag);
+		node = monty_create(atoi(va) * f);
 		if (format == 0)
 			func(&node, l);
 		if (format == 1)
