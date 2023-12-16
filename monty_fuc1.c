@@ -22,7 +22,7 @@ void monty_nop(stack_t **stack, unsigned int len_number)
  * This function swaps the top two elements of the stack. Exits with an error
  * message (case 8) if the stack is too short (less than two elements).
  */
-void swap_tow_element(stack_t **stack, unsigned int len_number)
+void swap_tow_elements(stack_t **stack, unsigned int len_number)
 {
 	stack_t *tmp;
 

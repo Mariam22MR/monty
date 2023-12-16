@@ -12,7 +12,7 @@ stack_t *head = NULL;
  * cleanup through monty_free() before returning 0.
  */
 
-int monty_main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
