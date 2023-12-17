@@ -15,6 +15,7 @@
 void add_nodes(stack_t **node, __attribute__((unused))unsigned int l)
 {
 	stack_t *tmp;
+	stack_t *head = NULL;
 
 	if (node == NULL || *node == NULL)
 		exit(EXIT_FAILURE);

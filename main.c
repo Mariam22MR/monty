@@ -1,5 +1,5 @@
 #include "monty.h"
-stack_t *head = NULL;
+/*stack_t *head = NULL;*/
 
 /**
  * main - Main function for a Monty interpreter.
@@ -44,6 +44,7 @@ stack_t *monty_create(int n)
 void monty_free(void)
 {
 	stack_t *tmp;
+	stack_t *head = NULL;
 
 	if (head == NULL)
 		return;
@@ -64,6 +65,7 @@ void monty_free(void)
 void add_to_line(stack_t **node, __attribute__((unused))unsigned int l)
 {
 	stack_t *tmp;
+	stack_t *head = NULL;
 
 	if (node == NULL || *node == NULL)
 		exit(EXIT_FAILURE);
