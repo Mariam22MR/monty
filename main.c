@@ -2,11 +2,11 @@
 stack_t *head = NULL;
 
 /**
- * monty_main - Main function for a Monty interpreter.
+ * main - Main function for a Monty interpreter.
  * @argc: Number of command line arguments.
  * @argv: Array of command line arguments.
  */
-int monty_main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{

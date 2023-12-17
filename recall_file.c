@@ -95,7 +95,7 @@ void monty_find(char *opcode, char *va, int l, int format)
 		{"pint", monty_print},
 		{"pop", monty_pop},
 		{"nop", monty_nop},
-		{"swap", swap_tow_elements},
+		{"swap", swap_two_elements},
 		{"add", add_two_elements},
 		{"sub", sub_two_elements},
 		{"div", div_two_elements},
