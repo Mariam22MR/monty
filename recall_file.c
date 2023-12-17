@@ -103,6 +103,8 @@ void monty_find(char *opcode, char *va, int l, int format)
 		{"mod", mod_two_elements},
 		{"pchar", monty_pchar},
 		{"pstr", monty_pstr},
+		{"rotl", monty_rotl},
+		{"rotr", monty_rotr},
 		{NULL, NULL}
 	};
 

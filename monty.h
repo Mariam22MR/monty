@@ -70,5 +70,7 @@ void mod_two_elements(stack_t **, unsigned int);
 void handle_error(int error_code, ...);
 void handle_str_error(int error_code, ...);
 void more_handle_error(int error_code, ...);
+void monty_rotr(stack_t **, unsigned int);
+void monty_rotl(stack_t **, unsigned int);
 
 #endif
