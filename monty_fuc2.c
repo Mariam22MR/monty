@@ -1,15 +1,15 @@
 #include "monty.h"
 
-/*
- * div_two_elements - Divides the second element by the top element in the stack.
+/**
+ * div_two_elements - Divides the second element by top element in the stack.
  * @stack: Pointer to the stack to be modified.
  * @len_number: Line number for error reporting.
  *
- * This function divides the second element by the top element in the stack and
- * replaces them with the result. Exits with an error message (case 8) if the stack
- * is too short (less than two elements) or (case 9) if the top element is zero.
+ * This function divides the second element by top element in the stack and
+ * replaces them with the result. Exits with an error message (case 8) if stack
+ * is too short (less than two elements) or (case 9) if top element is zero.
  */
-void div_tow_elements(stack_t **stack, unsigned int len_number)
+void div_two_elements(stack_t **stack, unsigned int len_number)
 {
 	int i;
 
@@ -25,16 +25,16 @@ void div_tow_elements(stack_t **stack, unsigned int len_number)
 	(*stack)->prev = NULL;
 }
 
-/*
+/**
  * mul_two_elements - Multiplies the top two elements of the stack.
  * @stack: Pointer to the stack to be modified.
  * @len_number: Line number for error reporting.
  *
- * This function multiplies the top two elements of the stack and replaces them
- * with the result. Exits with an error message (case 8) if the stack is too short
+ * This function multiplies the top two elements of stack and replaces them
+ * with the result. Exits with an error message (case 8) if stack is too short
  * (less than two elements).
  */
-void mul_tow_elements(stack_t **stack, unsigned int len_number)
+void mul_two_elements(stack_t **stack, unsigned int len_number)
 {
 	int i;
 
@@ -48,18 +48,18 @@ void mul_tow_elements(stack_t **stack, unsigned int len_number)
 	(*stack)->prev = NULL;
 }
 
-/*
- * mod_two_elements - Computes the remainder of the division of the second element
+/**
+ * mod_two_elements - Computes the remainder of division of second element
  *                    by the top element in the stack.
  * @stack: Pointer to the stack to be modified.
  * @len_number: Line number for error reporting.
  *
- * This function computes the remainder of the division of the second element by
- * the top element in the stack and replaces them with the result. Exits with an
+ * This function computes the remainder of division of the second element by
+ * the top element in the stack and replaces them with result. Exits with an
  * error message (case 8) if the stack is too short (less than two elements) or
  * (case 9) if the top element is zero.
  */
-void mod_tow_elements(stack_t **stack, unsigned int len_number)
+void mod_two_elements(stack_t **stack, unsigned int len_number)
 {
 	int i;
 

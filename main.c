@@ -6,7 +6,7 @@ stack_t *head = NULL;
  * @argc: Number of command line arguments.
  * @argv: Array of command line arguments.
  */
-int main(int argc, char *argv[])
+int monty_main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 	monty_free();
 	return (0);
 }
-
 /**
  * monty_create - Creates a new stack node with the given value.
  * @n: Integer value to be stored in the new node.
@@ -37,7 +36,6 @@ stack_t *monty_create(int n)
 
 /**
  * monty_free - Frees the memory allocated for the stack nodes.
- *
  * description: This function iteratively frees the memory allocated for each
  *	node.
  */

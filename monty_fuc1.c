@@ -1,10 +1,9 @@
 #include "monty.h"
 
-/*
+/**
  * monty_nop - Does nothing.
  * @stack: Unused parameter (pointer to the stack).
  * @len_number: Unused parameter (line number).
- *
  * This function does nothing and serves as a placeholder for the "nop" opcode.
  * It takes no action and is used to maintain proper opcode handling.
  */
@@ -13,16 +12,14 @@ void monty_nop(stack_t **stack, unsigned int len_number)
 	(void)stack;
 	(void)len_number;
 }
-
-/*
- * swap_two_element - Swaps the top two elements of the stack.
+/**
+ * swap_two_elements - Swaps the top two elements of the stack.
  * @stack: Pointer to the stack to be modified.
  * @len_number: Line number for error reporting.
- *
  * This function swaps the top two elements of the stack. Exits with an error
  * message (case 8) if the stack is too short (less than two elements).
  */
-void swap_tow_elements(stack_t **stack, unsigned int len_number)
+void swap_two_elements(stack_t **stack, unsigned int len_number)
 {
 	stack_t *tmp;
 
@@ -37,17 +34,15 @@ void swap_tow_elements(stack_t **stack, unsigned int len_number)
 	tmp->prev = NULL;
 	*stack = tmp;
 }
-
-/*
+/**
  * add_two_elements - Adds the top two elements of the stack.
  * @stack: Pointer to the stack to be modified.
  * @len_number: Line number for error reporting.
- *
  * This function adds the top two elements of the stack and replaces them with
  * the result. Exits with an error message (case 8) if the stack is too short
  * (less than two elements).
  */
-void add_tow_elements(stack_t **stack, unsigned int len_number)
+void add_two_elements(stack_t **stack, unsigned int len_number)
 {
 	int i;
 
@@ -60,17 +55,15 @@ void add_tow_elements(stack_t **stack, unsigned int len_number)
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }
-
-/*
- * sub_two_elements - Subtracts the top element from the second element in the stack.
+/**
+ * sub_two_elements - Subtracts the top element from second element in stack.
  * @stack: Pointer to the stack to be modified.
  * @len_number: Line number for error reporting.
- *
- * This function subtracts the top element from the second element in the stack and
- * replaces them with the result. Exits with an error message (case 8) if the stack
+ * This function subtracts the top element from second element in stack and
+ * replaces them with result. Exits with an error message (case 8) if stack
  * is too short (less than two elements).
  */
-void sub_tow_elements(stack_t **stack, unsigned int len_number)
+void sub_two_elements(stack_t **stack, unsigned int len_number)
 {
 	int i;
 

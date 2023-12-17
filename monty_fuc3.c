@@ -1,6 +1,8 @@
 #include "monty.h"
 
-
+/**
+ *
+ */
 void monty_pchar(stack_t **stack, unsigned int len_number)
 {
 	int ascii;
@@ -14,7 +16,9 @@ void monty_pchar(stack_t **stack, unsigned int len_number)
 	printf("%c\n", ascii);
 }
 
-
+/**
+ *
+ */
 void monty_pstr(stack_t **stack, __attribute__((unused))unsigned int l)
 {
 	int ascii;

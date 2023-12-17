@@ -1,6 +1,6 @@
 #include "monty.h"
 
-/*
+/**
  * monty_open - Opens and reads a Monty script file.
  * @name_file: Name of the Monty script file to be opened.
  *
@@ -20,7 +20,7 @@ void monty_open(char *name_file)
 }
 
 
-/*
+/**
  * monty_read - Reads and processes Monty script file lines.
  * @file_desc: Pointer to the opened Monty script file.
  *
@@ -42,7 +42,7 @@ void monty_read(FILE *file_desc)
 }
 
 
-/*
+/**
  * monty_strtok - Tokenizes a line from a Monty script file.
  * @buf: Line from the Monty script file to be tokenized.
  * @len_number: Line number for error reporting.
@@ -96,11 +96,13 @@ void monty_find(char *opcode, char *va, int l, int format)
 		{"pop", monty_pop},
 		{"nop", monty_nop},
 		{"swap", swap_tow_elements},
-		{"add", add_tow_elements},
-		{"sub", sub_tow_elements},
-		{"div", div_tow_elements},
-		{"mul", mul_tow_elements},
-		{"mod", mod_tow_elements},
+		{"add", add_two_elements},
+		{"sub", sub_two_elements},
+		{"div", div_two_elements},
+		{"mul", mul_two_elements},
+		{"mod", mod_two_elements},
+		{"pchar", monty_pchar},
+		{"pstr", monty_pstr},
 		{NULL, NULL}
 	};
 
@@ -119,7 +121,7 @@ void monty_find(char *opcode, char *va, int l, int format)
 		handle_error(3, l, opcode);
 }
 
-/*
+/**
  * monty_find - Finds and calls the appropriate Monty instruction function.
  * @opcode: Opcode to be processed.
  * @va: Optional value associated with the opcode.
@@ -128,7 +130,7 @@ void monty_find(char *opcode, char *va, int l, int format)
  *
  * This function iterates through the list of supported Monty instructions
  * and calls the corresponding function based on the provided opcode. Handles
- * special cases for comments (opcode starting with '#') and unknown instructions.
+ * special cases for comments(opcode starting with '#')an unknown instructions
  */
 void monty_call(op_func func, char *op, char *va, int l, int format)
 {

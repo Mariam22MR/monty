@@ -42,12 +42,12 @@ typedef struct instruction_s
 extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 
-void monty_open(char *file_name);
-int monty_strtok(char *buf, int len_number, int format);
+void monty_open(char *);
+int monty_strtok(char *, int, int);
 void monty_read(FILE *);
 int len_chars(FILE *);
 void monty_find(char *, char *, int, int);
-
+int monty_main(int, char *);
 stack_t *monty_create(int n);
 void monty_free(void);
 void monty_print_add(stack_t **, unsigned int);

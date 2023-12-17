@@ -80,7 +80,11 @@ void more_handle_error(int error_code, ...)
 	monty_free();
 	exit(EXIT_FAILURE);
 }
-
+/**
+ * handle_str_error - Handles and reports additional errors in a Monty.
+ * @error_code: Integer error code representing the type of error.
+ * @...: Variable arguments providing context based on the error code.
+ */
 void handle_str_error(int error_code, ...)
 {
 	va_list argument;
