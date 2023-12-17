@@ -139,7 +139,6 @@ void monty_find(char *opcode, char *va, int l, int format)
 void monty_call(op_func func, char *op, char *va, int l, int format)
 {
 	stack_t *node;
-	stack_t *head = NULL;
 	int f;
 	int i;
 
