@@ -1,7 +1,10 @@
 #include "monty.h"
 
 /**
- *
+ * monty_pchar - Prints the ASCII character of the top element of the stack.
+ * @stack: Double pointer to the beginning of the stack.
+ * @len_number: Line number in the Monty byte code file where the
+ *		instruction appears.
  */
 void monty_pchar(stack_t **stack, unsigned int len_number)
 {
@@ -17,7 +20,9 @@ void monty_pchar(stack_t **stack, unsigned int len_number)
 }
 
 /**
- *
+ * monty_pstr - Prints the string starting at the top of the stack
+ * @stack: A pointer to the top of the stack
+ * @l: Line number (unused in this function)
  */
 void monty_pstr(stack_t **stack, __attribute__((unused))unsigned int l)
 {

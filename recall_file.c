@@ -47,6 +47,7 @@ void monty_read(FILE *file_desc)
  * @buf: Line from the Monty script file to be tokenized.
  * @len_number: Line number for error reporting.
  * @format: Current format (0 for stack, 1 for queue).
+ * Return: format
  *
  * This function tokenizes the provided line using space and newline characters
  * as delimiters. It extracts the opcode and value, if present, and checks for
@@ -78,7 +79,7 @@ int monty_strtok(char *buf, int len_number, int format)
 /**
  * monty_find - find the appropriate function for the opcode
  * @opcode: opcode
- * @value: argument of opcode
+ * @va: argument of opcode
  * @format:  storage format. If 0 Nodes will be entered as a stack.
  * @l: line number
  * if 1 nodes will be entered as a queue.
@@ -124,8 +125,9 @@ void monty_find(char *opcode, char *va, int l, int format)
 }
 
 /**
- * monty_find - Finds and calls the appropriate Monty instruction function.
- * @opcode: Opcode to be processed.
+ * monty_call - Finds and calls the appropriate Monty instruction function.
+ * @func: pointer to the function.
+ * @op: Opcode to be processed.
  * @va: Optional value associated with the opcode.
  * @l: Line number for error reporting.
  * @format: Current format (0 for stack, 1 for queue).

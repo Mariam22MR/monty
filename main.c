@@ -5,6 +5,7 @@ stack_t *head = NULL;
  * main - Main function for a Monty interpreter.
  * @argc: Number of command line arguments.
  * @argv: Array of command line arguments.
+ * Return: 0.
  */
 int main(int argc, char *argv[])
 {
@@ -20,6 +21,7 @@ int main(int argc, char *argv[])
 /**
  * monty_create - Creates a new stack node with the given value.
  * @n: Integer value to be stored in the new node.
+ * Return: node
  */
 stack_t *monty_create(int n)
 {
