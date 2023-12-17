@@ -59,8 +59,9 @@ void monty_call(op_func, char *, char *, int, int);
 void monty_print(stack_t **, unsigned int);
 void monty_pop(stack_t **, unsigned int);
 void monty_nop(stack_t **, unsigned int);
+void monty_pchar(stack_t **, unsigned int);
+void monty_pstr(stack_t **, unsigned int);
 void swap_tow_elements(stack_t **, unsigned int);
-
 void add_tow_elements(stack_t **, unsigned int);
 void sub_tow_elements(stack_t **, unsigned int);
 void div_tow_elements(stack_t **, unsigned int);
@@ -68,6 +69,7 @@ void mul_tow_elements(stack_t **, unsigned int);
 void mod_tow_elements(stack_t **, unsigned int);
 
 void handle_error(int error_code, ...);
+void handle_str_error(int error_code, ...);
 void more_handle_error(int error_code, ...);
 
 #endif

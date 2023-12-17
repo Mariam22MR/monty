@@ -1,6 +1,6 @@
 #include "monty.h"
 
-/*
+/**
  * handle_error - Function to handle and report errors in a Monty interpreter
  * @error_code: Integer representing the specific error code
  * @...: Variable arguments depending on the error_code
@@ -43,8 +43,8 @@ void handle_error(int error_code, ...)
 	monty_free();
 	exit(EXIT_FAILURE);
 }
-/*
- * more_handle_error - Handles and reports additional errors in a Monty interpreter.
+/**
+ * more_handle_error - Handles and reports additional errors in a Monty.
  * @error_code: Integer error code representing the type of error.
  * @...: Variable arguments providing context based on the error code.
  */
@@ -73,6 +73,28 @@ void more_handle_error(int error_code, ...)
 		case 9:
 			fprintf(stderr, "L%d: division by zero\n",
 				va_arg(argument, unsigned int));
+			break;
+		default:
+			break;
+	}
+	monty_free();
+	exit(EXIT_FAILURE);
+}
+
+void handle_str_error(int error_code, ...)
+{
+	va_list argument;
+	int len_numbers;
+
+	va_start(argument, error_code);
+	len_numbers = va_arg(argument, int);
+	switch (error_code)
+	{
+		case 10:
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", len_numbers);
+			break;
+		case 11:
+			fprintf(stderr, "L%d: can't pchar, stack empty\n", len_numbers);
 			break;
 		default:
 			break;
